@@ -37,7 +37,7 @@ const Home = () => {
         </div>
         <div className="flex justify-center">
           <button className="w-40 hover:border-blue-950 hover:border-solid hover:border-2 rounded-lg mr-4 font-pop text-white font-semibold p-1 hover:bg-blue-700 hover:text-black">
-            <Link to="/mas_votadas">Más Votadas</Link>
+            <Link to="/mas_votada">Más Votadas</Link>
           </button>
         </div>
         <div className="flex justify-center">
