@@ -11,16 +11,20 @@ const Actor = () => {
   const fetchMovies = async (actor) => {
     setLoading(true);
     setError(null);
+    setMovies("");
     try {
       const info = await axios.get(
         `https://etl-machine-learning-api-movie.onrender.com/get_actor/?actor=${actor}`
       );
-
       const data = info.data;
       setMovies(data);
     } catch (error) {
-      console.error("Error fetching data:", error); // Log the error
-      setError("Error fetching data");
+      console.error("Error fetching data:", error);
+      if (error.response && error.response.status === 404) {
+        setError(`El actor ${actor} no se encuentra en nuestra base de datos`);
+      } else {
+        setError("Error fetching data");
+      }
     } finally {
       setLoading(false);
     }
@@ -43,9 +47,17 @@ const Actor = () => {
         </h1>
       </div>
       <NavBar onSearch={handleSearch} />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {movies && (
+      {loading && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          Loading...
+        </p>
+      )}
+      {error && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          {error}
+        </p>
+      )}
+      {!error && movies && (
         <p className="font-pop text-white font-bold text-center mt-8">
           {movies}
         </p>

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* index.css or App.css */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #333745; /* Example background color */
+}
+
+body {
+  @apply bg-dark; /* Example Tailwind background color */
+}

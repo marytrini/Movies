@@ -7,7 +7,6 @@ import MasVotada from "../src/views/masVotada/MasVotada";
 import Mes from "../src/views/mes/Mes";
 import Popularidad from "../src/views/popularidad/Popularidad";
 import Recomendacion from "../src/views/recomendacion/Recomendacion";
-import Titulo from "../src/views/titulo/Titulo";
 import "./App.css";
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
         <Route path="/mes" element={<Mes />} />
         <Route path="/popularidad" element={<Popularidad />} />
         <Route path="/recomendacion" element={<Recomendacion />} />
-        <Route path="/titulo" element={<Titulo />} />
       </Routes>
     </div>
   );

@@ -11,6 +11,7 @@ const MasVotada = () => {
   const fetchMovies = async (movie) => {
     setLoading(true);
     setError(null);
+    setMovies("");
     try {
       const resp = await axios.get(
         `https://etl-machine-learning-api-movie.onrender.com/votos_titulo/?movie=${movie}`
@@ -19,8 +20,14 @@ const MasVotada = () => {
       const info = resp.data;
       setMovies(info.mensaje);
     } catch (error) {
-      console.error("Error fetching data:", error); // Log the error
-      setError("Error fetching data");
+      console.error("Error fetching data", error);
+      if (error.response && error.response.status === 404) {
+        setError(
+          `La película ${movie} no se encuentra en nuestra base de datos`
+        );
+      } else {
+        setError("Error fetching data");
+      }
     } finally {
       setLoading(false);
     }
@@ -44,9 +51,17 @@ const MasVotada = () => {
         </h1>
       </div>
       <NavBar onSearch={handleMovieSearch} />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {movies && (
+      {loading && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          Loading...
+        </p>
+      )}
+      {error && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          {error}
+        </p>
+      )}
+      {!error && movies && (
         <p className="font-pop text-white font-bold text-center mt-8">
           {movies}
         </p>

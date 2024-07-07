@@ -11,6 +11,7 @@ const Popularidad = () => {
   const getMovies = async (movie) => {
     setLoading(true);
     setError(null);
+    setMovies("");
     try {
       const response = await axios.get(
         `https://etl-machine-learning-api-movie.onrender.com/score_titulo/?movie=${movie}`
@@ -19,8 +20,14 @@ const Popularidad = () => {
       const data = response.data;
       setMovies(data.mensaje);
     } catch (error) {
-      console.error("Error fetching data:", error); // Log the error
-      setError("Error fetching data");
+      if (error.response && error.response.status === 404) {
+        console.error("Error fetching data", error);
+        setError(
+          `La película ${movie} no se encuentra en nuestra base de datos`
+        );
+      } else {
+        setError("Error fetching data");
+      }
     } finally {
       setLoading(false);
     }
@@ -42,9 +49,17 @@ const Popularidad = () => {
         </h1>
       </div>
       <NavBar onSearch={handleInput} />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {movies && (
+      {loading && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          Loading...
+        </p>
+      )}
+      {error && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          {error}
+        </p>
+      )}
+      {!error && movies && (
         <p className="font-pop text-white font-bold text-center mt-8">
           {movies}
         </p>
