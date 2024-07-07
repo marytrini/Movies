@@ -11,6 +11,7 @@ const Mes = () => {
   const getMovies = async (mes) => {
     setLoading(true);
     setError(null);
+    setMovies("");
     try {
       const resp = await axios.get(
         `https://etl-machine-learning-api-movie.onrender.com/cant_mes/?mes=${mes}`
@@ -19,7 +20,12 @@ const Mes = () => {
       const data = resp.data;
       setMovies(data.message);
     } catch (error) {
-      setError("Data not found");
+      if (error.response && error.response.status === 404) {
+        console.error("Error fetching data", error);
+        setError(`No existe un mes ${mes} en nuestra base de datos`);
+      } else {
+        setError("Error fetching data");
+      }
     } finally {
       setLoading(false);
     }
@@ -42,9 +48,17 @@ const Mes = () => {
         </h1>
       </div>
       <NavBar onSearch={handleInputChange} />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {movies && (
+      {loading && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          Loading...
+        </p>
+      )}
+      {error && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          {error}
+        </p>
+      )}
+      {!error && movies && (
         <p className="font-pop text-white font-bold text-center mt-8">
           {movies}
         </p>

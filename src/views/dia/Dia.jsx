@@ -11,6 +11,7 @@ const Dia = () => {
   const fetchMovies = async (dia) => {
     setLoading(true);
     setError(null);
+    setMovies("");
     try {
       const response = await axios.get(
         `https://etl-machine-learning-api-movie.onrender.com/cant_dia/?dia=${dia}`
@@ -18,7 +19,12 @@ const Dia = () => {
       const moviesData = response.data;
       setMovies(moviesData.message);
     } catch (error) {
-      setError(error.message);
+      if (error.response && error.response.status === 404) {
+        console.error("Error fetching data", error);
+        setError(`No existe un día ${dia} en nuestra base de datos`);
+      } else {
+        setError("Error fetching data");
+      }
     } finally {
       setLoading(false);
     }
@@ -43,9 +49,17 @@ const Dia = () => {
         </h1>
       </div>
       <NavBar onSearch={handleSearch} />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {movies && (
+      {loading && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          Loading...
+        </p>
+      )}
+      {error && (
+        <p className="font-pop text-white font-bold text-center mt-8">
+          {error}
+        </p>
+      )}
+      {!error && movies && (
         <p className="font-pop text-white font-bold text-center mt-8">
           {movies}
         </p>

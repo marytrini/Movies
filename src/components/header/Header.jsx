@@ -1,7 +1,9 @@
 const Header = () => {
   return (
-    <div>
-      <h1>Películas</h1>
+    <div className="mt-8">
+      <h1 className="font-pop font-black text-6xl text-center text-slate-400 animate-slide">
+        Películas
+      </h1>
     </div>
   );
 };
