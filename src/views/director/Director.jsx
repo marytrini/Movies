@@ -53,7 +53,10 @@ const Director = () => {
           Directores exitosos
         </h1>
       </div>
-      <NavBar onSearch={handleDirectorSearch} />
+      <NavBar
+        onSearch={handleDirectorSearch}
+        placeholder="ingrese un director"
+      />
       {loading && (
         <p className="font-pop text-white font-bold text-center mt-8">
           Loading...

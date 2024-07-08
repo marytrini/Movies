@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, placeholder }) => {
   const [query, setQuery] = useState("");
 
   const handleSearch = (event) => {
@@ -20,7 +20,7 @@ const SearchBar = ({ onSearch }) => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Busca..."
+          placeholder={placeholder}
         />
         <button
           className="w-40 border-blue-950 border-solid border-2 rounded-e-lg mr-4 font-pop text-white font-semibold p-1 bg-blue-700 hover:text-black"
@@ -35,6 +35,7 @@ const SearchBar = ({ onSearch }) => {
 
 SearchBar.propTypes = {
   onSearch: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
 
 export default SearchBar;

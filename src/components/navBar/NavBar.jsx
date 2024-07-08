@@ -2,7 +2,7 @@ import SearchBar from "../searchBar/SearchBar";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-const NavBar = ({ onSearch }) => {
+const NavBar = ({ onSearch, placeholder }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -19,13 +19,14 @@ const NavBar = ({ onSearch }) => {
         </button>
       </div>
       <div>
-        <SearchBar onSearch={onSearch} />
+        <SearchBar onSearch={onSearch} placeholder={placeholder} />
       </div>
     </div>
   );
 };
 NavBar.propTypes = {
   onSearch: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
 
 export default NavBar;

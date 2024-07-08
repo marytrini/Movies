@@ -48,7 +48,7 @@ const Dia = () => {
           Películas por día
         </h1>
       </div>
-      <NavBar onSearch={handleSearch} />
+      <NavBar onSearch={handleSearch} placeholder="ingrese un día" />
       {loading && (
         <p className="font-pop text-white font-bold text-center mt-8">
           Loading...

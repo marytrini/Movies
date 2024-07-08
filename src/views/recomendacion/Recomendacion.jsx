@@ -4,33 +4,31 @@ import NavBar from "../../components/navBar/NavBar";
 
 const Recomendacion = () => {
   const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState({});
-  const [recommendation, setRecommendation] = useState("");
+  const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchRecommendations = async (movie) => {
     setLoading(true);
     setError(null);
-    setMovies({});
-    setRecommendation("");
+    setMovies([]);
+
     try {
       const response = await axios.get(
         `https://etl-machine-learning-api-movie.onrender.com/recommender/?titulo=${movie}`
       );
 
       const data = response.data;
-      setRecommendation(data.message);
-      setMovies(data.recommendations);
+
+      if (typeof data === "string") {
+        setError(data);
+      } else {
+        setMovies(data);
+      }
     } catch (error) {
       console.error("Error fetching data", error);
-      if (error.response && error.response.status === 404) {
-        setError(
-          `La película ${movie} no se encuentra en nuestra base de datos, no es posible obtener recomendaciones`
-        );
-      } else {
-        setError("Error fetching data");
-      }
+
+      setError("Error fetching data");
     } finally {
       setLoading(false);
     }
@@ -52,7 +50,10 @@ const Recomendacion = () => {
           Recomendaciones
         </h1>
       </div>
-      <NavBar onSearch={handleRecommendationSearch} />
+      <NavBar
+        onSearch={handleRecommendationSearch}
+        placeholder="ingrese un título"
+      />
       {loading && (
         <p className="font-pop text-white font-bold text-center mt-8">
           Loading...
@@ -64,24 +65,23 @@ const Recomendacion = () => {
         </p>
       )}
       <div className="flex flex-col items-center gap-12">
-        {!error && recommendation && (
-          <p className="font-pop text-white font-bold text-center mt-8">
-            {recommendation}
-          </p>
+        {!error && movies.length > 0 && (
+          <h1 className="font-pop text-white font-bold text-center mt-8">
+            Recomendaciones basadas en {query}:
+          </h1>
         )}
-
-        {Object.keys(movies).length > 0 && (
-          <div className="w-60 h-auto p-6 rounded-md bg-slate-500 items-center">
-            {Object.entries(movies).map(([key, value]) => (
-              <p
-                key={key}
-                className="font-pop text-white font-bold text-justify hover:text-blue-950 mt-1"
-              >
-                {value}
-              </p>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-wrap gap-4">
+          {movies.map((movie, index) => (
+            <div
+              key={index}
+              className="w-60 h-auto p-6 rounded-md bg-slate-500"
+            >
+              <h2 className="font-pop text-white font-semibold text-center hover:text-blue-950">
+                {movie}
+              </h2>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

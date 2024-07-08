@@ -14,7 +14,7 @@ const MasVotada = () => {
     setMovies("");
     try {
       const resp = await axios.get(
-        `https://etl-machine-learning-api-movie.onrender.com/votos_titulo/?movie=${movie}`
+        `https://etl-machine-learning-api-movie.onrender.com/votos_titulo/?titulo_de_la_filmaci%C3%B3n=${movie}`
       );
 
       const info = resp.data;
@@ -50,7 +50,7 @@ const MasVotada = () => {
           Más valoraciones
         </h1>
       </div>
-      <NavBar onSearch={handleMovieSearch} />
+      <NavBar onSearch={handleMovieSearch} placeholder="ingrese un título" />
       {loading && (
         <p className="font-pop text-white font-bold text-center mt-8">
           Loading...

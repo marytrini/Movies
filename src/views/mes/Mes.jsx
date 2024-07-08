@@ -47,7 +47,7 @@ const Mes = () => {
           Películas por mes
         </h1>
       </div>
-      <NavBar onSearch={handleInputChange} />
+      <NavBar onSearch={handleInputChange} placeholder="ingrese un mes" />
       {loading && (
         <p className="font-pop text-white font-bold text-center mt-8">
           Loading...

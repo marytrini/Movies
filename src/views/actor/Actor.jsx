@@ -46,7 +46,7 @@ const Actor = () => {
           Actores
         </h1>
       </div>
-      <NavBar onSearch={handleSearch} />
+      <NavBar onSearch={handleSearch} placeholder="ingrese un actor" />
       {loading && (
         <p className="font-pop text-white font-bold text-center mt-8">
           Loading...

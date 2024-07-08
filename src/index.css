@@ -2,22 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* index.css or App.css */
 html,
 body,
 #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #333745; /* Example background color */
+  background-color: #333745;
 }
 
 body {
-  @apply bg-dark; /* Example Tailwind background color */
+  @apply bg-dark;
 }
 @keyframes slide {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0%);
   }
   100% {
     transform: translateX(-100%);

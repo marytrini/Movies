@@ -14,11 +14,11 @@ const Popularidad = () => {
     setMovies("");
     try {
       const response = await axios.get(
-        `https://etl-machine-learning-api-movie.onrender.com/score_titulo/?movie=${movie}`
+        `https://etl-machine-learning-api-movie.onrender.com/score_titulo/?titulo_de_la_filmaci%C3%B3n=${movie}`
       );
 
       const data = response.data;
-      setMovies(data.mensaje);
+      setMovies(data.message);
     } catch (error) {
       if (error.response && error.response.status === 404) {
         console.error("Error fetching data", error);
@@ -48,7 +48,7 @@ const Popularidad = () => {
           Más populares
         </h1>
       </div>
-      <NavBar onSearch={handleInput} />
+      <NavBar onSearch={handleInput} placeholder="ingrese un título" />
       {loading && (
         <p className="font-pop text-white font-bold text-center mt-8">
           Loading...
