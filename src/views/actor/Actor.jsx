@@ -15,7 +15,7 @@ const Actor = () => {
     setMovies("");
     try {
       const info = await axios.get(
-        `https://etl-machine-learning-api-movie.onrender.com/get_actor/?actor=${actor}`
+        `https://etl-machine-learning-api-movie.onrender.com/get_actor/?nombre_actor=${actor}`
       );
       const data = info.data;
       setMovies(data);
@@ -44,7 +44,7 @@ const Actor = () => {
     <div className="min-h-screen flex flex-col  overflow-y-clip">
       <header>
         <div className="mt-8 mb-12">
-          <h1 className="font-pop text-2xl text-center text-white font-black">
+          <h1 className="font-pop text-3xl text-center text-white font-black">
             Actores
           </h1>
         </div>
@@ -62,7 +62,7 @@ const Actor = () => {
           </p>
         )}
         {!error && movies && (
-          <p className="font-pop text-white font-bold text-center mt-8">
+          <p className="font-pop text-white font-bold text-center sm:text-xs lg:text-base 2xl:text-xl mt-8 mx-12">
             {movies}
           </p>
         )}

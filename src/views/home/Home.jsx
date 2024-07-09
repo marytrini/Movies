@@ -10,8 +10,8 @@ const Home = () => {
           <Header />
         </div>
       </header>
-      <main className="flex-grow">
-        <div className="flex flex-col space-y-4 mt-20">
+      <main className="flex-grow mb-8">
+        <div className="flex flex-col space-y-4 mt-8">
           <div className="flex justify-center">
             <Link to="/dia">
               <button className="w-40 hover:border-blue-950 hover:border-solid hover:border-2 rounded-lg mr-4 font-pop text-white font-semibold sm:text-base lg:text-lg 2xl:text-xl p-1 hover:bg-blue-700 hover:text-black">

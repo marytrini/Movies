@@ -70,15 +70,15 @@ const Recomendacion = () => {
         )}
         <div className="flex flex-col items-center gap-12">
           {!error && movies.length > 0 && (
-            <h1 className="font-pop text-white font-bold text-center mt-8">
+            <h1 className="font-pop text-white font-bold text-center sm:text-xs lg:text-lg 2xl:text-xl mt-8 mx-12">
               Recomendaciones basadas en {query}:
             </h1>
           )}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 sm:items-center sm:ml-10">
             {movies.map((movie, index) => (
               <div
                 key={index}
-                className="w-60 h-auto p-6 rounded-md bg-slate-500"
+                className="sm:w-32 lg:w-60 h-auto p-6 rounded-md bg-slate-500 "
               >
                 <h2 className="font-pop text-white font-semibold text-center hover:text-blue-950">
                   {movie}

@@ -63,7 +63,7 @@ const Mes = () => {
           </p>
         )}
         {!error && movies && (
-          <p className="font-pop text-white font-bold text-center mt-8">
+          <p className="font-pop text-white font-bold text-center sm:text-xs lg:text-lg 2xl:text-2xl mt-8 mx-12">
             {movies}
           </p>
         )}

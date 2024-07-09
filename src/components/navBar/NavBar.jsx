@@ -12,7 +12,7 @@ const NavBar = ({ onSearch, placeholder }) => {
     <div className="flex 2xl:justify-around sm:justify-evenly w-auto">
       <div>
         <button
-          className="sm:max-w-20 lg:w-40 hover:border-blue-950 hover:border-solid hover:border-2 rounded-lg mr-4 font-pop text-white font-semibold p-1 hover:bg-blue-700 hover:text-black"
+          className="sm:max-w-20 lg:w-40 hover:border-blue-950 hover:border-solid hover:border-2 rounded-lg mr-4 font-pop text-white sm:text-base 2xl:text-xl font-semibold p-1 hover:bg-blue-700 hover:text-black"
           onClick={handleClick}
         >
           Home
