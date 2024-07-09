@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
+import Footer from "../../components/footer/Footer";
 
 const Dia = () => {
   const [query, setQuery] = useState("");
@@ -43,27 +44,32 @@ const Dia = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="mt-8 mb-12">
-        <h1 className="font-pop text-2xl text-center text-white font-black">
-          Películas por día
-        </h1>
-      </div>
-      <NavBar onSearch={handleSearch} placeholder="ingrese un día" />
-      {loading && (
-        <p className="font-pop text-white font-bold text-center mt-8">
-          Loading...
-        </p>
-      )}
-      {error && (
-        <p className="font-pop text-white font-bold text-center mt-8">
-          {error}
-        </p>
-      )}
-      {!error && movies && (
-        <p className="font-pop text-white font-bold text-center mt-8">
-          {movies}
-        </p>
-      )}
+      <header>
+        <div className="mt-8 mb-12">
+          <h1 className="font-pop text-2xl text-center text-white font-black">
+            Películas por día
+          </h1>
+        </div>
+        <NavBar onSearch={handleSearch} placeholder="ingrese un día" />
+      </header>
+      <main className="flex-grow">
+        {loading && (
+          <p className="font-pop text-white font-bold text-center mt-8">
+            Loading...
+          </p>
+        )}
+        {error && (
+          <p className="font-pop text-white font-bold text-center mt-8">
+            {error}
+          </p>
+        )}
+        {!error && movies && (
+          <p className="font-pop text-white font-bold text-center mt-8">
+            {movies}
+          </p>
+        )}
+      </main>
+      <Footer />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
+import Footer from "../../components/footer/Footer";
 
 const Recomendacion = () => {
   const [query, setQuery] = useState("");
@@ -45,44 +46,49 @@ const Recomendacion = () => {
   };
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="mt-8 mb-12">
-        <h1 className="font-pop text-2xl text-center text-white font-black">
-          Recomendaciones
-        </h1>
-      </div>
-      <NavBar
-        onSearch={handleRecommendationSearch}
-        placeholder="ingrese un título"
-      />
-      {loading && (
-        <p className="font-pop text-white font-bold text-center mt-8">
-          Loading...
-        </p>
-      )}
-      {error && (
-        <p className="font-pop text-white font-bold text-center mt-8">
-          {error}
-        </p>
-      )}
-      <div className="flex flex-col items-center gap-12">
-        {!error && movies.length > 0 && (
-          <h1 className="font-pop text-white font-bold text-center mt-8">
-            Recomendaciones basadas en {query}:
+      <header>
+        <div className="mt-8 mb-12">
+          <h1 className="font-pop text-2xl text-center text-white font-black">
+            Recomendaciones
           </h1>
-        )}
-        <div className="flex flex-wrap gap-4">
-          {movies.map((movie, index) => (
-            <div
-              key={index}
-              className="w-60 h-auto p-6 rounded-md bg-slate-500"
-            >
-              <h2 className="font-pop text-white font-semibold text-center hover:text-blue-950">
-                {movie}
-              </h2>
-            </div>
-          ))}
         </div>
-      </div>
+        <NavBar
+          onSearch={handleRecommendationSearch}
+          placeholder="ingrese un título"
+        />
+      </header>
+      <main className="flex-grow">
+        {loading && (
+          <p className="font-pop text-white font-bold text-center mt-8">
+            Loading...
+          </p>
+        )}
+        {error && (
+          <p className="font-pop text-white font-bold text-center mt-8">
+            {error}
+          </p>
+        )}
+        <div className="flex flex-col items-center gap-12">
+          {!error && movies.length > 0 && (
+            <h1 className="font-pop text-white font-bold text-center mt-8">
+              Recomendaciones basadas en {query}:
+            </h1>
+          )}
+          <div className="flex flex-wrap gap-4">
+            {movies.map((movie, index) => (
+              <div
+                key={index}
+                className="w-60 h-auto p-6 rounded-md bg-slate-500"
+              >
+                <h2 className="font-pop text-white font-semibold text-center hover:text-blue-950">
+                  {movie}
+                </h2>
+              </div>
+            ))}
+          </div>
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 };

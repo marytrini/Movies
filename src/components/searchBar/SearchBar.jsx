@@ -14,7 +14,7 @@ const SearchBar = ({ onSearch, placeholder }) => {
     <div>
       <form onSubmit={handleSearch}>
         <input
-          className="rounded-s-md w-40 h-8 p-2"
+          className="rounded-s-md w-40 sm:max-w-28 h-8 sm:max-h-8 p-2"
           id="query"
           name="dia"
           type="text"
@@ -23,7 +23,7 @@ const SearchBar = ({ onSearch, placeholder }) => {
           placeholder={placeholder}
         />
         <button
-          className="w-40 border-blue-950 border-solid border-2 rounded-e-lg mr-4 font-pop text-white font-semibold p-1 bg-blue-700 hover:text-black"
+          className="w-40 sm:max-w-20 border-blue-950 border-solid border-2 rounded-e-lg mr-4 font-pop text-white font-semibold p-1 bg-blue-700 hover:text-black"
           type="submit"
         >
           Buscar

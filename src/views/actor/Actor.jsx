@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
+import Footer from "../../components/footer/Footer";
 
 const Actor = () => {
   const [query, setQuery] = useState("");
@@ -40,28 +41,33 @@ const Actor = () => {
     setQuery(query);
   };
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="mt-8 mb-12">
-        <h1 className="font-pop text-2xl text-center text-white font-black">
-          Actores
-        </h1>
-      </div>
-      <NavBar onSearch={handleSearch} placeholder="ingrese un actor" />
-      {loading && (
-        <p className="font-pop text-white font-bold text-center mt-8">
-          Loading...
-        </p>
-      )}
-      {error && (
-        <p className="font-pop text-white font-bold text-center mt-8">
-          {error}
-        </p>
-      )}
-      {!error && movies && (
-        <p className="font-pop text-white font-bold text-center mt-8">
-          {movies}
-        </p>
-      )}
+    <div className="min-h-screen flex flex-col  overflow-y-clip">
+      <header>
+        <div className="mt-8 mb-12">
+          <h1 className="font-pop text-2xl text-center text-white font-black">
+            Actores
+          </h1>
+        </div>
+        <NavBar onSearch={handleSearch} placeholder="ingrese un actor" />
+      </header>
+      <main className="flex-grow">
+        {loading && (
+          <p className="font-pop text-white font-bold text-center mt-8">
+            Loading...
+          </p>
+        )}
+        {error && (
+          <p className="font-pop text-white font-bold text-center mt-8">
+            {error}
+          </p>
+        )}
+        {!error && movies && (
+          <p className="font-pop text-white font-bold text-center mt-8">
+            {movies}
+          </p>
+        )}
+      </main>
+      <Footer />
     </div>
   );
 };
