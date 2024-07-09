@@ -6,6 +6,10 @@ export default {
       backgroundColor: {
         dark: "#333745",
       },
+      backgroundImage: {
+        custom_gradient:
+          "linear-gradient(to top right, rgba(33,33,36,1) 0%, rgba(24,34,66,1) 60%, rgba(37,70,126,1) 100%)",
+      },
       fontFamily: {
         pop: ["Poppins", "sans-serif"],
       },
