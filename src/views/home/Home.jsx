@@ -4,7 +4,7 @@ import Footer from "../../components/footer/Footer";
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-custom_gradient">
+    <div className="min-h-screen flex flex-col bg-custom_gradient overflow-hidden">
       <header>
         <div className="flex-shrink-0">
           <Header />

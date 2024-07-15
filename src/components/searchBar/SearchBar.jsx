@@ -23,7 +23,7 @@ const SearchBar = ({ onSearch, placeholder }) => {
           placeholder={placeholder}
         />
         <button
-          className="w-40 sm:max-w-20 border-blue-950 border-solid border-2 rounded-e-lg mr-4 font-pop text-white font-semibold p-1 bg-blue-900 "
+          className="w-40 sm:max-w-20 border-blue-950 border-solid border-2 rounded-e-lg mr-4 font-pop text-white font-semibold p-1 bg-blue-900 hover:bg-zinc-950 hover:text-white"
           type="submit"
         >
           Buscar

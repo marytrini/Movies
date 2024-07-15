@@ -41,7 +41,7 @@ const Actor = () => {
     setQuery(query);
   };
   return (
-    <div className="min-h-screen flex flex-col  overflow-y-clip">
+    <div className="min-h-screen flex flex-col  overflow-y-clip bg-custom_gradient">
       <header>
         <div className="mt-8 mb-12">
           <h1 className="font-pop text-3xl text-center text-white font-black">

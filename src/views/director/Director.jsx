@@ -48,7 +48,7 @@ const Director = () => {
     console.log(query);
   };
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-custom_gradient">
       <header>
         <div className="mt-8 mb-12">
           <h1 className="font-pop text-2xl text-center text-white font-black">
